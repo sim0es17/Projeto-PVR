@@ -1,0 +1,76 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MenuController : MonoBehaviour
+{
+    [Header("Painéis")]
+    [SerializeField] private GameObject mainButtonsPanel;    // Painel com Play/Settings/Exit
+    [SerializeField] private GameObject playOptionsPanel;    // Painel com Multiplayer/Training
+
+    [Header("Nomes das cenas (exactos nas Build Settings)")]
+    [SerializeField] private string multiplayerSceneName = "MultiplayerLobby";
+    [SerializeField] private string characterSelectSceneName = "CharacterSelect";
+    [SerializeField] private string trainingSceneName = "TrainingGround";
+    [SerializeField] private string settingsSceneName = "SettingsMenu"; // CORRIGIDO PARA "SettingsMenu"
+
+    private void Awake()
+    {
+        // Garante estados iniciais
+        if (mainButtonsPanel != null) mainButtonsPanel.SetActive(true);
+        if (playOptionsPanel != null) playOptionsPanel.SetActive(false);
+    }
+
+    // ---------- Botões do menu principal ----------
+    public void OnPlayPressed()
+    {
+        TogglePanels(false, true); // esconde principal, mostra submenu
+    }
+
+    // NOVO: Função para o botão de Settings
+    public void OnSettingsPressed()
+    {
+        LoadSceneSafe(settingsSceneName);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
+    // ---------- Botões do submenu (Play Options) ----------
+    public void OnBackPressed()
+    {
+        TogglePanels(true, false); // volta ao menu principal
+    }
+
+    public void OnMultiplayerPressed()
+    {
+        LoadSceneSafe(multiplayerSceneName);
+    }
+
+    public void OnTrainingPressed()
+    {
+        // Primeiro vai para a cena de seleção de personagem
+        LoadSceneSafe(characterSelectSceneName);
+    }
+
+    // ---------- Utilitários ----------
+    private void TogglePanels(bool showMain, bool showPlayOptions)
+    {
+        if (mainButtonsPanel != null) mainButtonsPanel.SetActive(showMain);
+        if (playOptionsPanel != null) playOptionsPanel.SetActive(showPlayOptions);
+    }
+
+    private void LoadSceneSafe(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogError("Nome da cena não está definido no Inspector!");
+            return;
+        }
+        SceneManager.LoadScene(sceneName);
+    }
+}
