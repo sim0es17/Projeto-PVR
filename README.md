@@ -4,8 +4,8 @@
 Este projeto foi desenvolvido para a unidade curricular de **Programação de Videojogos em Rede (PVR)**. O objetivo principal é a criação de um jogo multijogador utilizando o motor de jogo **Unity** e a biblioteca **Photon Unity Networking (PUN 2)**.
 
 O foco do trabalho reside na implementação de arquiteturas cliente-servidor, sincronização de estados em tempo real e gestão de comunicação via rede.
+Este Projeto foi Desenvolvido por : Bento Simoes 27914, Ricardo Costa 27927, Hugo Oliveira 27920 
 
-Este Projeto foi Desenvovido por : Bento Simões 27914, Ricardo Costa 27927, Hugo Oliveira 27920
 ---
 
 ## 🛠️ Implementação Técnica e Protocolos
