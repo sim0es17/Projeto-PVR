@@ -5,6 +5,7 @@ Este projeto foi desenvolvido para a unidade curricular de **Programação de Vi
 
 O foco do trabalho reside na implementação de arquiteturas cliente-servidor, sincronização de estados em tempo real e gestão de comunicação via rede.
 
+Este Projeto foi Desenvovido por : Bento Simões 27914, Ricardo Costa 27927, Hugo Oliveira 27920
 ---
 
 ## 🛠️ Implementação Técnica e Protocolos
